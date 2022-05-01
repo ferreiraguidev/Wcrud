@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.2</spring-cloud.version>
-        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <dependencies>
         <dependency>
@@ -67,6 +67,7 @@
             <version>${org.mapstruct.version}</version>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
