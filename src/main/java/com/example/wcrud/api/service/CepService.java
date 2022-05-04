@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CepService {
 
-    // private final not working either *
-//    private final ViaCepClient viaCepClient;
-//
-//    public CepService(ViaCepClient viaCepClient) {
-//        this.viaCepClient = viaCepClient;
-//    }
+//     private final not working either *
+    private final ViaCepClient viaCepClient;
 
-//    public ViaCep getCep(String cep){
-//        return viaCepClient.buscaPorEndereco(cep);
-//
-//    }
+    public CepService(ViaCepClient viaCepClient) {
+        this.viaCepClient = viaCepClient;
+    }
+
+    public ViaCep getCep(String cep){
+        return viaCepClient.buscaPorEndereco(cep);
+
+    }
 }

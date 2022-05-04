@@ -5,6 +5,7 @@ import com.example.wcrud.api.dtos.CustomerResponseDTO;
 import com.example.wcrud.api.model.Customer;
 import com.example.wcrud.api.repository.CustomerRepository;
 import com.example.wcrud.api.service.CustomerService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +34,11 @@ public class CustomerControllerTest {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+    @BeforeEach
+    void setUp(){
+        customerRepository.deleteAll();
+    }
+
     @Test
     public void shouldSaveCustomerWithoutError() {
 
@@ -51,7 +57,6 @@ public class CustomerControllerTest {
         assertEquals(customer.getCpf(), response.getBody().getCpf());
         assertEquals(customer.getEmail(), response.getBody().getEmail());
         assertEquals(customer.getCreatedAt(), response.getBody().getCreatedAt());
-
     }
 
     @Test
@@ -100,7 +105,6 @@ public class CustomerControllerTest {
         assertEquals("15616516565", response.getBody().get(0).getCpf());
         assertEquals(customers.get(0).getEmail(), response.getBody().get(0).getEmail());
         assertEquals(customers.get(0).getCreatedAt(), response.getBody().get(0).getCreatedAt());
-
 
         assertEquals("Guilherme ferreira faixa laranja", response.getBody().get(1).getName());
         assertEquals(customers.get(1).getCpf(), response.getBody().get(1).getCpf());
