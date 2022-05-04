@@ -13,4 +13,7 @@ public class CustomerRequestDTO {
     private String cpf;
     private String email;
     private LocalDate createdAt;
+
+
+
 }

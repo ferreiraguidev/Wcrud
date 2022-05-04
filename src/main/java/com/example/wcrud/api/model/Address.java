@@ -1,29 +1,34 @@
 package com.example.wcrud.api.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Customer {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String stName;
 
-    private String cpf;
+    private String number;
 
-    private String email;
+    private String complement;
+
+    private String cep;
 
     private LocalDate createdAt;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    private String weather;
+
+    @ManyToOne
+    private Customer customer;
+
 }

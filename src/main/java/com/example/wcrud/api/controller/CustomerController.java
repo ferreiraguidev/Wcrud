@@ -5,11 +5,12 @@ import com.example.wcrud.api.dtos.CustomerResponseDTO;
 import com.example.wcrud.api.mapper.CustomerMapper;
 import com.example.wcrud.api.model.Customer;
 import com.example.wcrud.api.service.CustomerService;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.*;
 
 @RequestMapping("/api/customer")
 @RestController
@@ -22,26 +23,26 @@ public class CustomerController {
         this.customerMapper = customerMapper;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(CREATED)
     @PostMapping
     public CustomerResponseDTO save(@RequestBody @Valid CustomerRequestDTO customerRequestDTO) {
         Customer customer = customerService.save(customerMapper.toDomain(customerRequestDTO));
         return customerMapper.fromDomain(customer);
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(OK)
     @GetMapping("{id}")
     public CustomerResponseDTO findById(@PathVariable Long id) {
         return customerMapper.fromDomain(customerService.findById(id));
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id) {
         customerService.deleteById(id);
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(OK)
     @GetMapping
     public List<CustomerResponseDTO> listAll() {
         return customerMapper.fromDomainList(customerService.findAll());
