@@ -25,6 +25,7 @@ public class Customer {
 
     private LocalDate createdAt;
 
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Address> addresses = new ArrayList<>();
 }

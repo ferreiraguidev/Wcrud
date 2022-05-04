@@ -8,7 +8,6 @@ import com.example.wcrud.api.service.AddressService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -42,11 +41,5 @@ public class AddressController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id) {
         addressService.deleteById(id);
-    }
-
-    @ResponseStatus(OK)
-    @GetMapping
-    public List<AddressResponseDTO> listAll() {
-        return addressMapper.fromDomainList(addressService.findAll());
     }
 }

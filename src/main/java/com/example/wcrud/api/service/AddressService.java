@@ -1,6 +1,7 @@
 package com.example.wcrud.api.service;
 
 import com.example.wcrud.api.model.Address;
+import com.example.wcrud.api.model.ViaCep;
 import com.example.wcrud.api.repository.AddressRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,21 @@ import java.util.List;
 public class AddressService {
     private final AddressRepository repository;
 
-    public AddressService(AddressRepository repository) {
+    private final CepService cepService;
+
+    public AddressService(AddressRepository repository, CepService cepService) {
         this.repository = repository;
+        this.cepService = cepService;
     }
 
     public Address save(Address address) {
-        return repository.save(address);
+//
+//        ViaCep cep = new ViaCep();
+//
+//        if(cep.getCep() != null){
+//            cepService.getCep(cepp);
+//        }
+       return repository.save(address);
     }
 
     public void deleteById(Long id) {
@@ -24,10 +34,5 @@ public class AddressService {
 
     public Address findById(Long id) {
         return repository.findById(id).orElseThrow(NullPointerException::new);
-    }
-
-    public List<Address> findAll() {
-        return repository.findAll();
-
     }
 }

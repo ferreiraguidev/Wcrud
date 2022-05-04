@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -16,18 +17,23 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String stName;
+    private String complemento;
 
-    private String number;
+    private String bairro;
 
-    private String complement;
+    private String localidade;
+
+    private String uf;
 
     private String cep;
+
+    private String logradouro;
 
     private LocalDate createdAt;
 
     private String weather;
 
+    @NotNull
     @ManyToOne
     private Customer customer;
 

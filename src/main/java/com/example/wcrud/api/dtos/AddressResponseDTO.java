@@ -10,11 +10,15 @@ import java.time.LocalDate;
 public class AddressResponseDTO {
 
     private Long id;
-    private String stName;
-    private String number;
-    private String complement;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
     private String cep;
+    private String logradouro;
     private LocalDate createdAt;
     private String weather;
+
+
 
 }

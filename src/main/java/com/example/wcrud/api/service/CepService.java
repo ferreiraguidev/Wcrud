@@ -2,13 +2,12 @@ package com.example.wcrud.api.service;
 
 import com.example.wcrud.api.model.ViaCep;
 import com.example.wcrud.api.repository.ViaCepClient;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Service
+@RestController
 public class CepService {
 
-//     private final not working either *
     private final ViaCepClient viaCepClient;
 
     public CepService(ViaCepClient viaCepClient) {
