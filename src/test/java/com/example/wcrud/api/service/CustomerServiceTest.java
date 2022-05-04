@@ -3,7 +3,6 @@ package com.example.wcrud.api.service;
 import com.example.wcrud.api.model.Customer;
 import com.example.wcrud.api.repository.CustomerRepository;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
