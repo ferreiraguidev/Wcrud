@@ -14,6 +14,4 @@ public class CustomerRequestDTO {
     private String email;
     private LocalDate createdAt;
 
-
-
 }

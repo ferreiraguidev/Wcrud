@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,6 +25,6 @@ public class Customer {
 
     private LocalDate createdAt;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Address> addresses = new ArrayList<>();
 }
