@@ -1,6 +1,7 @@
 package com.example.wcrud.api.factories;
 
 import com.example.wcrud.api.dtos.ViaCEPResponseDTO;
+import com.example.wcrud.api.dtos.WeatherResponseDTO;
 import com.example.wcrud.api.model.Address;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Component
 public class AddressFactory {
 
-    public Address viaCEPToAddress(ViaCEPResponseDTO viaCEPResponseDTO, Address address){
+    public Address viaCEPToAddress(ViaCEPResponseDTO viaCEPResponseDTO, WeatherResponseDTO weatherResponseDTO, Address address){
 
         Address addressFactory = new Address();
         addressFactory.setBairro(viaCEPResponseDTO.getBairro());
@@ -22,6 +23,7 @@ public class AddressFactory {
         addressFactory.setLogradouro(viaCEPResponseDTO.getLogradouro());
         addressFactory.setCreatedAt(LocalDate.now());
         addressFactory.setCustomer(address.getCustomer());
+        addressFactory.setWeather(weatherResponseDTO.getMain().getTemp());
 
         return addressFactory;
     }
