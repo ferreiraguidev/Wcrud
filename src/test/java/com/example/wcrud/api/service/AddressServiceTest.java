@@ -4,10 +4,10 @@ import com.example.wcrud.api.model.Address;
 import com.example.wcrud.api.model.Customer;
 import com.example.wcrud.api.repository.AddressRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -15,7 +15,9 @@ import java.util.Optional;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+
+
+@ExtendWith(SpringExtension.class)
 class AddressServiceTest {
 
     @InjectMocks
@@ -27,7 +29,6 @@ class AddressServiceTest {
 
     @Test
     public void shouldSaveAddress() {
-
         Address address = genericAddress();
 
         when(addressRepository.save(address))
@@ -36,7 +37,6 @@ class AddressServiceTest {
         Address savedAddress = addressService.save(address);
 
         verify(addressRepository).save(savedAddress);
-
     }
 
     @Test
@@ -53,12 +53,6 @@ class AddressServiceTest {
         Address savedAddress = genericAddress();
         savedAddress.setId(1L);
         addressRepository.deleteById(savedAddress.getId());
-    }
-
-    @Test
-    public void shouldListAllAddresses() {
-        Address address = genericAddress();
-        addressRepository.findAll();
     }
 
     private Address genericAddress() {

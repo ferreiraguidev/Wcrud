@@ -7,8 +7,6 @@ import com.example.wcrud.api.service.CustomerService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.List;
-
 
 @Mapper(componentModel = "spring", uses = {CustomerService.class})
 public interface AddressMapper {
@@ -18,5 +16,4 @@ public interface AddressMapper {
 
     AddressResponseDTO fromDomain(Address entity);
 
-    List<AddressResponseDTO> fromDomainList(List<Address> entityList);
 }

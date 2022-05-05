@@ -1,32 +1,30 @@
 package com.example.wcrud.api.service;
 
+import com.example.wcrud.api.dtos.ViaCEPResponseDTO;
+import com.example.wcrud.api.factories.AddressFactory;
 import com.example.wcrud.api.model.Address;
-import com.example.wcrud.api.model.ViaCep;
 import com.example.wcrud.api.repository.AddressRepository;
+import com.example.wcrud.api.repository.ViaCepClient;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AddressService {
 
+
     private final AddressRepository repository;
+    private final ViaCepClient viaCepClient;
+    private final AddressFactory addressFactory;
 
-    private final CepService cepService;
-
-    public AddressService(AddressRepository repository, CepService cepService) {
+    public AddressService(AddressRepository repository, ViaCepClient viaCepClient, AddressFactory addressFactory) {
         this.repository = repository;
-        this.cepService = cepService;
+        this.viaCepClient = viaCepClient;
+        this.addressFactory = addressFactory;
     }
 
     public Address save(Address address) {
-//
-//        ViaCep cep = new ViaCep();
-//
-//        if(cep.getCep() != null){
-//            cepService.getCep(cepp);
-//        }
-       return repository.save(address);
+        ViaCEPResponseDTO viaCEPResponseDTO = viaCepClient.buscaPorEndereco(address.getCep());
+        Address cepToAddress = addressFactory.viaCEPToAddress(viaCEPResponseDTO, address);
+        return repository.save(cepToAddress);
     }
 
     public void deleteById(Long id) {

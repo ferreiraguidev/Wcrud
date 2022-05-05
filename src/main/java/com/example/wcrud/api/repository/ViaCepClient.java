@@ -1,7 +1,7 @@
 package com.example.wcrud.api.repository;
 
 
-import com.example.wcrud.api.model.ViaCep;
+import com.example.wcrud.api.dtos.ViaCEPResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +10,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ViaCepClient {
 
     @GetMapping("{cep}/json")
-    ViaCep buscaPorEndereco(@PathVariable("cep") String cep);
-
+    ViaCEPResponseDTO buscaPorEndereco(@PathVariable("cep") String cep);
 }
