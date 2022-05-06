@@ -13,5 +13,4 @@ public interface OpenWeather {
     WeatherResponseDTO searchWeatherByCity(@RequestParam("q") String city,
                                            @RequestParam("appid") String appid,
                                            @RequestParam("units") String units);
-
 }
