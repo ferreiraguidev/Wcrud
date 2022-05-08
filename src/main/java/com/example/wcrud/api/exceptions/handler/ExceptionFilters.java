@@ -1,4 +1,4 @@
-package com.example.wcrud.api.exceptions;
+package com.example.wcrud.api.exceptions.handler;
 
 import lombok.*;
 
