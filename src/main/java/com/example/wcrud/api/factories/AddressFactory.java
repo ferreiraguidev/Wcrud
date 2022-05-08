@@ -8,14 +8,12 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 
-
-
 @Component
 public class AddressFactory {
 
-    public Address viaCEPToAddress(ViaCEPResponseDTO viaCEPResponseDTO, WeatherResponseDTO weatherResponseDTO, Address address){
-
+    public Address viaCEPToAddress(ViaCEPResponseDTO viaCEPResponseDTO, WeatherResponseDTO weatherResponseDTO, Address address) {
         Address addressFactory = new Address();
+
         addressFactory.setBairro(viaCEPResponseDTO.getBairro());
         addressFactory.setLocalidade(viaCEPResponseDTO.getLocalidade());
         addressFactory.setUf(viaCEPResponseDTO.getUf());
