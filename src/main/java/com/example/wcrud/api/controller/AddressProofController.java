@@ -1,7 +1,9 @@
 package com.example.wcrud.api.controller;
 
 
-import com.example.wcrud.api.service.ImageService;
+import com.example.wcrud.api.dtos.AddressProofResponseDTO;
+import com.example.wcrud.api.mapper.AddressProofMapper;
+import com.example.wcrud.api.service.AddressProofService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,15 +14,16 @@ import java.io.IOException;
 @RestController
 public class AddressProofController {
 
-    private final ImageService fileUploadService;
+    private final AddressProofService addressProofService;
+    private final AddressProofMapper addressProofMapper;
 
-    public AddressProofController(ImageService fileUploadService) {
-        this.fileUploadService = fileUploadService;
+    public AddressProofController(AddressProofService addressProofService, AddressProofMapper addressProofMapper) {
+        this.addressProofService = addressProofService;
+        this.addressProofMapper = addressProofMapper;
     }
 
     @PostMapping("/upload")
-    public void save(@RequestParam("image") final MultipartFile image, @RequestParam("id") final Long id) throws IOException {
-        fileUploadService.saveImage(image, id);
+    public AddressProofResponseDTO save(@RequestParam("image") final MultipartFile image, @RequestParam("id") final Long id) throws IOException {
+        return addressProofMapper.fromDomain(addressProofService.save(image,id));
     }
 }
-

@@ -15,9 +15,8 @@ import java.util.UUID;
 @Service
 public class ImageService {
 
-    private static final String PATH = "./file/";
 
-    public void saveImage(final MultipartFile image, final Long id) throws IOException {
+    public String saveImage(final MultipartFile image, final String path) throws IOException {
         byte[] bytes = image.getBytes();
         String extension = getExtension(image);
         var fileName = UUID.randomUUID() + "." + extension;
@@ -26,13 +25,13 @@ public class ImageService {
             throw new FileNotSupportedExcepiton("File not supported ! Verify the type");
         }
 
-        File file = new File(PATH);
+        File file = new File(path);
 
         if(!file.exists()){
             file.mkdir();
         }
 
-        Files.write(Path.of(PATH + fileName), bytes);
+        return Files.write(Path.of(path + fileName), bytes).toAbsolutePath().toString();
     }
 
     private String getExtension(MultipartFile image) {
