@@ -19,6 +19,6 @@ public class AddressResponseDTO {
     private LocalDate createdAt;
     private String weather;
 
-
+    private AddressProofResponseDTO addressProof;
 
 }

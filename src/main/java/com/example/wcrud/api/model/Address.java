@@ -3,6 +3,7 @@ package com.example.wcrud.api.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -36,5 +37,8 @@ public class Address {
     @NotNull
     @ManyToOne
     private Customer customer;
+
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private AddressProof addressProof;
 
 }
