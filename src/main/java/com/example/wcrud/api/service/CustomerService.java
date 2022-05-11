@@ -14,15 +14,15 @@ public class CustomerService {
         this.repository = repository;
     }
 
-    public Customer save(Customer customer) {
+    public Customer save(final Customer customer) {
         return repository.save(customer);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(final Long id) {
         repository.deleteById(id);
     }
 
-    public Customer findById(Long id) {
+    public Customer findById(final Long id) {
         return repository.findById(id).orElseThrow(NullPointerException::new);
     }
 

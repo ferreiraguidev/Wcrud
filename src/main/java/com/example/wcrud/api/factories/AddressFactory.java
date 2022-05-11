@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Component
 public class AddressFactory {
 
-    public Address viaCEPToAddress(ViaCEPResponseDTO viaCEPResponseDTO, WeatherResponseDTO weatherResponseDTO, Address address) {
+    public Address viaCEPToAddress(final ViaCEPResponseDTO viaCEPResponseDTO,final WeatherResponseDTO weatherResponseDTO,final Address address) {
         Address addressFactory = new Address();
 
         addressFactory.setBairro(viaCEPResponseDTO.getBairro());

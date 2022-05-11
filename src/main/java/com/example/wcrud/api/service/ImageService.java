@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+
+
 @Service
 public class ImageService {
 
@@ -21,7 +24,7 @@ public class ImageService {
         String extension = getExtension(image);
         var fileName = UUID.randomUUID() + "." + extension;
 
-        if(!validatedExtension(extension)){
+        if(!validExtensions(extension)){
             throw new FileNotSupportedExcepiton("File not supported ! Verify the type");
         }
 
@@ -34,13 +37,13 @@ public class ImageService {
         return Files.write(Path.of(path + fileName), bytes).toAbsolutePath().toString();
     }
 
-    private String getExtension(MultipartFile image) {
+    private String getExtension(final MultipartFile image) {
         return Optional.ofNullable(
                 image.getOriginalFilename()).filter(file-> file.contains("."))
                 .map(file-> file.substring(image.getOriginalFilename().lastIndexOf(".")+ 1)).get();
     }
 
-    private boolean validatedExtension(String extension){
+    private boolean validExtensions(final String extension){
         return List.of("jpg","png","jpeg","pdf").contains(extension);
     }
 }

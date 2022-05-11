@@ -53,4 +53,9 @@ public class AddressProofService {
         return addressProofRepository.save(addressProof);
     }
 
+    public void deleteAddressProof(Long id) throws IOException {
+        var addressProof = addressService.findById(id).getAddressProof();
+        addressProofRepository.deleteById(id);
+        forceDelete(new File(addressProof.getPath()));
+    }
 }

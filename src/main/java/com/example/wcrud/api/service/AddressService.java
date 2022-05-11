@@ -11,13 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressService {
 
-
     private final AddressRepository repository;
     private final ViaCepClient viaCepClient;
     private final AddressFactory addressFactory;
     private final OpenWeather openWeather;
     private static final String APIKEY = "2304013567239bdf1a4250fdc08d976b";
-
 
     public AddressService(final AddressRepository repository,
                           final ViaCepClient viaCepClient,

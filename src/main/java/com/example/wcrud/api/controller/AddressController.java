@@ -26,20 +26,20 @@ public class AddressController {
 
     @ResponseStatus(CREATED)
     @PostMapping
-    public AddressResponseDTO save(@RequestBody @Valid AddressRequestDTO addressRequestDTO) {
+    public AddressResponseDTO save(@RequestBody @Valid final AddressRequestDTO addressRequestDTO) {
         Address address = addressService.save(addressMapper.toDomain(addressRequestDTO));
         return addressMapper.fromDomain(address);
     }
 
     @ResponseStatus(OK)
     @GetMapping("{id}")
-    public AddressResponseDTO findById(@PathVariable Long id) {
+    public AddressResponseDTO findById(@PathVariable final Long id) {
         return addressMapper.fromDomain(addressService.findById(id));
     }
 
     @ResponseStatus(NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable final Long id) {
         addressService.deleteById(id);
     }
 }

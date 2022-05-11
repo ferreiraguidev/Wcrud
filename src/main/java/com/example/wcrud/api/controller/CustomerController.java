@@ -25,20 +25,20 @@ public class CustomerController {
 
     @ResponseStatus(CREATED)
     @PostMapping
-    public CustomerResponseDTO save(@RequestBody @Valid CustomerRequestDTO customerRequestDTO) {
+    public CustomerResponseDTO save(@RequestBody @Valid final CustomerRequestDTO customerRequestDTO) {
         Customer customer = customerService.save(customerMapper.toDomain(customerRequestDTO));
         return customerMapper.fromDomain(customer);
     }
 
     @ResponseStatus(OK)
     @GetMapping("{id}")
-    public CustomerResponseDTO findById(@PathVariable Long id) {
+    public CustomerResponseDTO findById(@PathVariable final Long id) {
         return customerMapper.fromDomain(customerService.findById(id));
     }
 
     @ResponseStatus(NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable final Long id) {
         customerService.deleteById(id);
     }
 
